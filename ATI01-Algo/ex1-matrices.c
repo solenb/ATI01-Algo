@@ -70,8 +70,7 @@ void trace_tab(int** tab, int nb_L, int nb_C){
 		}
 	}
 	printf(" La trace résultante de la matrice : %d", t);
-}
-	
+}	
 
 int main(){
 
