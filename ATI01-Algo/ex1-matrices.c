@@ -71,6 +71,17 @@ void trace_tab(int** tab, int nb_L, int nb_C){
 	}
 	printf(" La trace résultante de la matrice : %d", t);
 }	
+void det_tab(int** tabCalc, int** tab, int nb_L,int nb_C){
+	int i,j,det;
+	if (nb_L == 1){
+		det == tab[0][0];
+	}
+	else 
+	
+} 
+
+
+
 
 int main(){
 
