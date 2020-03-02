@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
-void iter_fact(int n){
+void iter_fact(int fact){
 	int i;
 	int calc=1;
-	for (i=1; i<=n; i++){
+	for (i=1; i<=fact; i++){
 		calc*=i;
 	}
 	printf("Le résultat est : %d", calc);
 }
-void rec_fact(int n){
-	if (n == 0){
+int rec_fact(int fact){
+	if (fact == 0){
 		return 1;
 	}
 	else{ 
-		n *= rec_fact(n-1);
-		printf("Le résultat est : %d", n);
-}}
+		fact *= rec_fact(fact-1);
+	}
+	printf("Le résultat est : %d", fact);
+	return 0;
+}
 int main(){
 	int fact;
 	char action;
