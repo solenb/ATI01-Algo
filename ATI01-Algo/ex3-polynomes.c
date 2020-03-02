@@ -10,11 +10,12 @@ int fill_poly(int degre, int* poly){
 	printf("Degré du polynome : ");
 	scanf("%d",&degre);
 	printf("Rentrez les %d paramètres du polynome : \n", degre);
-	for (i=0; i < degre; i++){
+	for (i=0; i < degre+1; i++){
+		printf("X^%d : \n", i);
 		scanf("%d", &poly[i]);
 	}
 }	
 
-
 //int prompt_poly(int degre, int* poly){
+	
 
