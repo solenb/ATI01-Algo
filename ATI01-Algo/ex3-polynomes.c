@@ -9,6 +9,7 @@ int create_poly(int degre){
 int fill_poly(int degre, int* poly){
 	printf("Degré du polynome : ");
 	scanf("%d",&degre);
+	int i;
 	printf("Rentrez les %d paramètres du polynome : \n", degre);
 	for (i=0; i < degre+1; i++){
 		printf("X^%d : \n", i);
