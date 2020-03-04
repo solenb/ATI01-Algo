@@ -7,16 +7,21 @@ int create_poly(int degre){
 }
 
 int fill_poly(int degre, int* poly){
-	printf("Degré du polynome : ");
-	scanf("%d",&degre);
-	int i;
+	int i,degre;
 	printf("Rentrez les %d paramètres du polynome : \n", degre);
-	for (i=0; i < degre+1; i++){
-		printf("X^%d : \n", i);
+	for (i=degre;i>0; i--){
+		printf("X^%d : ", i);
 		scanf("%d", &poly[i]);
 	}
 }	
 
 //int prompt_poly(int degre, int* poly){
-	
 
+int main(){	
+	int degre;
+	int* poly;
+	printf("Degré du polynome : ");
+	scanf("%d",&degre);
+	poly=create_poly(degre);
+	fill_poly(degre, poly);
+}
