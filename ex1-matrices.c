@@ -70,15 +70,50 @@ void trace_tab(int** tab, int nb_L, int nb_C){
 		}
 	}
 	printf(" La trace résultante de la matrice : %d", t);
-}	
-void det_tab(int** tabCalc, int** tab, int nb_L,int nb_C){
-	int i,j,det;
-	if (nb_L == 1){
-		det == tab[0][0];
+}
+
+int** reduce_tab(int** T,int size,int del_L){
+	int i,j,k=0,new_size=size-1;
+	int** new_T;
+	new_size=size-1;
+	new_T=create_tab(new_size,new_size);
+	for (i=1;i<size;i++){
+			k=0;
+			for (j=0;j<size;j++){
+				if (j == del_L){
+				}
+				else{
+					new_T[i-1][k]=T[i][j];
+					k+=1;
+				}
+			}
 	}
-	else 
-	
-} 
+	return new_T;
+}
+
+
+
+int det_tab(int** tab, int nb_L){
+	int i,det=0;
+	if (nb_L == 2){
+		det = tab[0][0]*tab[1][1]-(tab[0][1]*tab[1][0]);
+	}
+	else if (nb_L == 1){
+		det=0;
+	}
+	else{
+		for (i=0;i<nb_L;i++){
+			if ( i%2 == 0){
+				det=det - tab[0][i]*det_tab(reduce_tab(tab,nb_L,i),nb_L-1);
+			}
+			else{
+				det=det + tab[0][i]*det_tab(reduce_tab(tab,nb_L,i),nb_L-1);
+			}
+		}
+	}
+	return det;
+}	
+ 
 
 
 
@@ -90,7 +125,7 @@ printf("Que voulez vous faire ?\n- Addition\t\t-> a\n- Multiplication\t-> m\n- A
 scanf("%c",&action);
 getchar();
 
-if((action == 'm') || (action == 'a') || (action == 'p') || (action == 't')){
+if((action == 'm') || (action == 'a') || (action == 'p') || (action == 't') || (action == 'd')){
 	int** tab;
 	printf("Création de la Matrice 1 : \n");
 	printf("Entrer le nombre de lignes : ");
@@ -135,5 +170,16 @@ if((action == 'm') || (action == 'a') || (action == 'p') || (action == 't')){
 	if ((action == 't')){
 		trace_tab(tab, lignes, colonnes);
 	}
+	if (action == 'd'){
+		if (lignes == colonnes){
+			int det;
+			det=det_tab(tab,lignes);
+			printf("Determinant = %d",det);
+		}
+		else{
+			printf("On ne peut pas calculer un déterminant avec une matrice non carrée.");
+		}
+	}
+   	delete_tab(tab,lignes,colonnes);
 	}
 }
